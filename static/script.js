@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('new-board-btn').addEventListener('click', async function() {
     try {
-        const response = await fetch('http://127.0.0.1:5000/new_board');
+        const response = await fetch("/new_board", ...);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -45,7 +45,7 @@ document.getElementById('solve-btn').addEventListener('click', async () => {
 
         console.log("Sending board to solve:", board);
 
-        const response = await fetch('http://127.0.0.1:5000/solve', {
+        const response =fetch("/solve", ... , {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ document.getElementById('check-btn').addEventListener('click', async () => {
             }
         }
 
-        const response = await fetch('http://127.0.0.1:5000/check', {
+        const response = await fetch("/check", ..., {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ board: board }),
